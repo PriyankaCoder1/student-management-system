@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Students List</title>
+    <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center;">Students List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.id}">1</td>
+                <td th:text="${student.name}">Student Name</td>
+                <td th:text="${student.age}">20</td>
+                <td th:text="${student.email}">email@example.com</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
