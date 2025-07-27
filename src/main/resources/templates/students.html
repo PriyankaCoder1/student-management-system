@@ -27,6 +27,7 @@
                 <th>Name</th>
                 <th>Age</th>
                 <th>Email</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -35,6 +36,9 @@
                 <td th:text="${student.name}">Student Name</td>
                 <td th:text="${student.age}">20</td>
                 <td th:text="${student.email}">email@example.com</td>
+                <td>
+                    <a th:href="@{'/students/' + ${student.id}}">View Details</a>
+                </td>
             </tr>
         </tbody>
     </table>
