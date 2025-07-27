@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Enroll in Courses</title>
+    <style>
+        form {
+            width: 50%;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enroll in Courses for <span th:text="${student.name}"></span></h1>
+    <form th:action="@{'/students/' + ${student.id} + '/enroll'}" method="post">
+        <div th:each="course : ${courses}">
+            <label>
+                <input type="checkbox" name="courseIds" th:value="${course.id}" />
+                <span th:text="${course.name}">Course Name</span> - 
+                <span th:text="${course.type}">Type</span> - 
+                Fees: <span th:text="${course.fees}">0</span>
+            </label>
+        </div>
+        <button type="submit">Enroll</button>
+    </form>
+    <div style="text-align:center; margin-top: 20px;">
+        <a th:href="@{'/students/' + ${student.id}}">Back to Student Details</a>
+    </div>
+</body>
+</html>
